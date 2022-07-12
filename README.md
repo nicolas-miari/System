@@ -1,2 +1,3 @@
 # System
-Interface for the System module of the ECS-based engine.
+
+A description of this package.
