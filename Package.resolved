@@ -8,6 +8,24 @@
         "revision" : "6bd867eaf76f2617d19ec615440aa2660a0597e5",
         "version" : "0.0.1"
       }
+    },
+    {
+      "identity" : "entity",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nicolas-miari/Entity",
+      "state" : {
+        "revision" : "0f2f06379561fcd28d596b18010e2981ad2468ed",
+        "version" : "0.0.0"
+      }
+    },
+    {
+      "identity" : "identifier",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nicolas-miari/Identifier.git",
+      "state" : {
+        "revision" : "c942cc5dd28c5f3b03602c5fd78d2995047e5907",
+        "version" : "0.0.1"
+      }
     }
   ],
   "version" : 2

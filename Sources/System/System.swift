@@ -1,5 +1,6 @@
 import Foundation
 import Component
+import Entity
 
 /**
  Common interface to all systems.
@@ -8,22 +9,30 @@ import Component
  */
 public protocol System: AnyObject {
 
-  // Normally use Int or String. Int should be faster to compare. The identifier type only needs to
-  // be equatable, not comparable. We only care whether two ids are equal or not, not which one
-  // comes first
-  associatedtype Identifier: Equatable
-
   // MARK: - Operation
 
   // Conforming types must implement based around private cache storage.
-  func cacheEntity(id: Identifier, components: ComponentSet)
+  func cacheEntity(id: EntityIdentifier, components: ComponentSet)
+
+  // Default implementation is provided based around `cacheEntity(id:components:)`.
+  func cacheEntities(_ table: [EntityIdentifier: ComponentSet])
 
   // Conforming types must implement based around private cache storage.
-  func uncacheEntity(id: Identifier)
+  func uncacheEntity(id: EntityIdentifier)
 
   // Conforming types must implement based on custom sytem logic.
   func operateOnCachedEntities()
 
   // Conforming types must implement based on custom component requirements.
-  func canOperateOnEntity(id: Identifier, components: ComponentSet) -> Bool
+  func canOperateOnEntity(id: EntityIdentifier, components: ComponentSet) -> Bool
+}
+
+// MARK: - Default Implementations
+
+extension System {
+  public func cacheEntities(_ table: [EntityIdentifier: ComponentSet]) {
+    table.forEach { id, components in
+      self.cacheEntity(id: id, components: components)
+    }
+  }
 }
