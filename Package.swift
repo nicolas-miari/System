@@ -16,8 +16,8 @@ let package = Package(
           targets: ["System"]),
     ],
     dependencies: [
-      .package(url: "https://github.com/nicolas-miari/Component", from: "0.0.1"),
-      .package(url: "https://github.com/nicolas-miari/Entity", from: "0.0.0")
+      .package(url: "https://github.com/nicolas-miari/Component", from: "1.0.0"),
+      .package(url: "https://github.com/nicolas-miari/Entity", from: "1.0.0")
     ],
     targets: [
       // Targets are the basic building blocks of a package. A target can define a module or a test suite.

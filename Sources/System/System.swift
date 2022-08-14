@@ -12,10 +12,10 @@ public protocol System: AnyObject {
   // MARK: - Operation
 
   // Conforming types must implement based around private cache storage.
-  func cacheEntity(id: EntityIdentifier, components: ComponentSet)
+  func cacheEntity(id: EntityIdentifier, components: ComponentList)
 
   // Default implementation is provided based around `cacheEntity(id:components:)`.
-  func cacheEntities(_ table: [EntityIdentifier: ComponentSet])
+  func cacheEntities(_ table: [EntityIdentifier: ComponentList])
 
   // Conforming types must implement based around private cache storage.
   func uncacheEntity(id: EntityIdentifier)
@@ -24,13 +24,13 @@ public protocol System: AnyObject {
   func operateOnCachedEntities()
 
   // Conforming types must implement based on custom component requirements.
-  func canOperateOnEntity(id: EntityIdentifier, components: ComponentSet) -> Bool
+  func canOperateOnEntity(id: EntityIdentifier, components: ComponentList) -> Bool
 }
 
 // MARK: - Default Implementations
 
 extension System {
-  public func cacheEntities(_ table: [EntityIdentifier: ComponentSet]) {
+  public func cacheEntities(_ table: [EntityIdentifier: ComponentList]) {
     table.forEach { id, components in
       self.cacheEntity(id: id, components: components)
     }
